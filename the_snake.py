@@ -55,7 +55,7 @@ class GameObject:
         self.body_color = body_color
 
     def draw(self):
-        """Отрисовывает объект на экране. Переопределяется в дочерних классах."""
+        """Отрисовывает объект. Переопределяется в дочерних классах."""
         pass
 
 
@@ -147,7 +147,7 @@ class Snake(GameObject):
             pygame.draw.rect(screen, BOARD_BACKGROUND_COLOR, last_rect)
 
     def reset(self):
-        """Сбрасывает змейку в начальное состояние после столкновения с собой."""
+        """Сбрасывает змейку в начальное состояние после столкновения."""
         self.length = 1
         self.positions = [self.position]
         self.direction = choice([UP, DOWN, LEFT, RIGHT])
