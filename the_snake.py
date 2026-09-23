@@ -48,7 +48,6 @@ class GameObject:
 
     def __init__(self, body_color=None):
         """Инициализирует объект в центре экрана с заданным цветом."""
-
         self.position = (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
 
         self.body_color = body_color
@@ -63,7 +62,6 @@ class Apple(GameObject):
 
     Яблоко занимает одну клетку и появляется в случайной точке поля.
     """
-
 
     def __init__(self, body_color=APPLE_COLOR, occupied_positions=None):
         """Инициализирует яблоко и задаёт ему случайную позицию."""
@@ -83,7 +81,6 @@ class Apple(GameObject):
                 self.position = new_position
                 break
 
-
     def draw(self):
         """Отрисовывает яблоко как квадрат размером в одну клетку."""
         rect = pygame.Rect(self.position, (GRID_SIZE, GRID_SIZE))
@@ -102,7 +99,6 @@ class Snake(GameObject):
         """Инициализирует змейку в центре поля длиной 1, движение вправо."""
         super().__init__(body_color)
         self.reset()
-
 
     def get_head_position(self):
         """Возвращает координаты головы змейки (первый элемент списка)."""
@@ -144,7 +140,6 @@ class Snake(GameObject):
         # Отрисовка головы змейки
         head_rect = pygame.Rect(self.get_head_position(),
                                 (GRID_SIZE, GRID_SIZE))
-
         pygame.draw.rect(screen, self.body_color, head_rect)
         pygame.draw.rect(screen, BORDER_COLOR, head_rect, 1)
 
@@ -189,10 +184,8 @@ def main():
     snake = Snake()
     apple = Apple(occupied_positions=snake.positions)
 
-
     while True:
         clock.tick(SPEED)
-
         handle_keys(snake)
         snake.update_direction()
         snake.move()
